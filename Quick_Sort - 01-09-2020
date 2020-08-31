@@ -1,0 +1,49 @@
+class Quick_sort
+{
+  public static void main(String [] args)
+  {
+    int arr[]={10,18,9,15,5};
+    int n = arr.length;
+    sort (arr,0,n);
+    print (arr,n);
+  }
+  void q_sort(int arr[],int low,int high)
+  { 
+    
+    if(low<high)
+    {
+        int pi=partition(arr,low,high);
+    	q_sort (arr,low,pi-1);
+    	q_sort (arr,pi+1,high);
+    }
+  }
+  int partirion (int arr[],int low,int high)
+  {
+    int pivot=arr[high];
+    int i=(low-1);
+    int j=0;
+    int temp;
+    for (j=low;j<high;j++)
+    {
+      if (arr[j]<pivot)
+      {
+        i++;
+        temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+      }
+    }
+    temp = arr[i+1];
+    arr[i+1] = arr[high];
+    arr[high] = temp;
+    
+    return i+1;
+  }
+  void print (int arr,int n)
+  {
+    for (int i=0;i<n;i++)
+    {
+      System.out.print(arr[i]+"	");
+    }
+  }
+}
